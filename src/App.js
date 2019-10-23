@@ -1,26 +1,59 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Todos from './components/Todos'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    todos: [
+      {
+        id: 1,
+        title: 'Suck me',
+        completed: false
+      },
+      {
+        id: 2,
+        title: 'Suck me 2',
+        completed: false
+      },
+      {
+        id: 3,
+        title: 'Suck me 3',
+        completed: false
+      },
+
+    ]
+  }
+
+
+  markComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id == id) {
+          todo.completed = !todo.completed
+        }
+        return todo;
+      })
+    });
+
+  }
+
+  //49:51 video
+  //https://www.youtube.com/watch?v=sBws8MSXN7A
+
+  render() {
+
+    return (
+      <div className="App">
+        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+      </div>
+
+    );
+
+
+
+  };
+
+
 }
 
 export default App;

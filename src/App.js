@@ -7,28 +7,28 @@ class App extends React.Component {
     todos: [
       {
         id: 1,
-        title: 'Suck me',
+        title: 'OOf',
         completed: false
       },
       {
         id: 2,
-        title: 'Suck me 2',
+        title: 'Oof 2',
         completed: false
       },
       {
         id: 3,
-        title: 'Suck me 3',
+        title: 'Oof 3',
         completed: false
       },
 
     ]
   }
 
-
+  //toggle Complete change name later
   markComplete = (id) => {
     this.setState({
       todos: this.state.todos.map(todo => {
-        if (todo.id == id) {
+        if (todo.id === id) {
           todo.completed = !todo.completed
         }
         return todo;

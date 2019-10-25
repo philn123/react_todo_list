@@ -28,9 +28,18 @@ export class TodoItem extends Component {
             <div style={this.getStyle()}>
                 <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} />
                 {title}
+                <button style={buttonStyle}>x</button>
             </div>
         )
     }
+}
+
+const buttonStyle = {
+    background: '#ff0000',
+    color: '#fff',
+    border: 'none',
+    float: 'right',
+    cursor: 'pointer',
 }
 
 //first part is name of class

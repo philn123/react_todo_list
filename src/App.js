@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Todos from './components/Todos'
+import Header from './components/header'
+import AddTodo from './components/AddTodo'
 
 class App extends React.Component {
   state = {
@@ -24,7 +26,7 @@ class App extends React.Component {
     ]
   }
 
-  //toggle Complete change name later
+ //toggle Complete change name later
   markComplete = (id) => {
     this.setState({
       todos: this.state.todos.map(todo => {
@@ -36,7 +38,18 @@ class App extends React.Component {
     });
 
   }
+  delTodo = (id) => {
+    this.setState({todos: [...this.state.todos.filter(todo => todo.id !== id)]});
 
+  }
+  addTodo = (title) => {
+    const newTodo= {
+      id: 4,
+      title,
+      completed: false
+    }
+    this.setState({todos: [...this.state.todos, newTodo]});
+  }
   //49:51 video
   //https://www.youtube.com/watch?v=sBws8MSXN7A
 
@@ -44,7 +57,12 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+          <div className="container">
+          <Header />
+          <AddTodo addTodo={this.addTodo}/>
+          <Todos todos={this.state.todos} markComplete={this.markComplete}
+            delTodo={this.delTodo}/>
+        </div>
       </div>
 
     );

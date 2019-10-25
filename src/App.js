@@ -3,12 +3,13 @@ import './App.css';
 import Todos from './components/Todos'
 import Header from './components/header'
 import AddTodo from './components/AddTodo'
+import uuid from 'uuid'
 
 class App extends React.Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title: 'OOf',
         completed: false
       },
@@ -44,7 +45,7 @@ class App extends React.Component {
   }
   addTodo = (title) => {
     const newTodo= {
-      id: 4,
+      id: uuid.v4(),
       title,
       completed: false
     }
